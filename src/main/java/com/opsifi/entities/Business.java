@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Business")
+@Table(name = "business")
 public class Business implements Serializable {
 
     @Id
