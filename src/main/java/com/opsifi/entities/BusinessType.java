@@ -1,5 +1,6 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
+import com.opsifi.enums.BusinessCategory;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
@@ -23,6 +24,3 @@ public class BusinessType implements Serializable {
     public void setLabel(BusinessCategory label) { this.label = label; }
 }
 
-enum BusinessCategory {
-    RETAIL_CHAIN, SCHOOL, INSTITUTE, MANUFACTURING_FACILITY;
-}

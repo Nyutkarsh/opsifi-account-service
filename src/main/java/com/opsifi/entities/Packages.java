@@ -1,4 +1,4 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -6,24 +6,32 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "OpsifiServices")
-public class OpsifiServices implements Serializable {
+@Table(name = "Packages")
+public class Packages implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String serviceName;
+    private String name;
 
     @Column(nullable = false, unique = true)
-    private UUID serviceUniqueId = UUID.randomUUID();
-
-    @Column(columnDefinition = "JSON")
-    private String serviceGlobalConfigTemplate;
+    private UUID uniqueId = UUID.randomUUID();
 
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime updatedDate = LocalDateTime.now();
+
+    @Column(columnDefinition = "JSON")
+    private String config;
+
+    public String getConfig() {
+        return config;
+    }
+
+    public void setConfig(String config) {
+        this.config = config;
+    }
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
@@ -41,28 +49,20 @@ public class OpsifiServices implements Serializable {
         this.id = id;
     }
 
-    public String getServiceGlobalConfigTemplate() {
-        return serviceGlobalConfigTemplate;
+    public String getName() {
+        return name;
     }
 
-    public void setServiceGlobalConfigTemplate(String serviceGlobalConfigTemplate) {
-        this.serviceGlobalConfigTemplate = serviceGlobalConfigTemplate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public UUID getUniqueId() {
+        return uniqueId;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public UUID getServiceUniqueId() {
-        return serviceUniqueId;
-    }
-
-    public void setServiceUniqueId(UUID serviceUniqueId) {
-        this.serviceUniqueId = serviceUniqueId;
+    public void setUniqueId(UUID uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     public LocalDateTime getUpdatedDate() {
