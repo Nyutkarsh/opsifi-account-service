@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "BusinessType")
+@Table(name = "businesstype")
 public class BusinessType implements Serializable {
 
     @Id

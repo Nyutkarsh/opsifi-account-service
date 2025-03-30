@@ -1,4 +1,7 @@
 package com.opsifi.repository;
 
-public interface BusinessOptedServicesRepository {
+import com.opsifi.entities.BusinessOptedServices;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BusinessOptedServicesRepository extends JpaRepository<BusinessOptedServices, Long> {
 }

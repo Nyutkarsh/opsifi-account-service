@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "BusinessPackages")
+@Table(name = "businesspackages")
 public class BusinessPackages implements Serializable {
 
     @Id

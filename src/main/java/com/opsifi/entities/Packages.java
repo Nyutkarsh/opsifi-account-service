@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Packages")
+@Table(name = "packages")
 public class Packages implements Serializable {
 
     @Id
