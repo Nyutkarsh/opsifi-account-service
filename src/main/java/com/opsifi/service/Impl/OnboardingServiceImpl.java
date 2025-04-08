@@ -21,7 +21,7 @@ public class OnboardingServiceImpl implements OnboardingService {
     }
 
     @Override
-    public UUID registerBusiness(BusinessAuthModel businessAuthModel) {
+    public Business registerBusiness(BusinessAuthModel businessAuthModel) {
         Business business = new Business();
         business.setBusinessName(businessAuthModel.getBusinessName());
         business.setBusinessAddress(businessAuthModel.getBusinessAddress());
@@ -30,8 +30,7 @@ public class OnboardingServiceImpl implements OnboardingService {
         business.setBusinessUniqueId(UUID.randomUUID());
         business.setActive(true);
 
-        businessRepository.save(business);
-        return business.getBusinessUniqueId();
+        return businessRepository.save(business);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "businessusers")
+@Table(name = "business_users")
 public class BusinessUsers implements Serializable {
 
     @Id
@@ -28,6 +28,7 @@ public class BusinessUsers implements Serializable {
     private Business business;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private BusinessUsersCategory userType;
 
     private LocalDateTime createdDate = LocalDateTime.now();

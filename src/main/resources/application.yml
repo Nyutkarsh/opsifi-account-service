@@ -1,15 +1,16 @@
+server:
+  port: 9090
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/onboarding_db
-    username: root
-    password: MySQL@07
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/onboarding_db
+    username: postgres
+    password: Postgres@07
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
-    show-sql: true
-
-  server:
-    port: 9090
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

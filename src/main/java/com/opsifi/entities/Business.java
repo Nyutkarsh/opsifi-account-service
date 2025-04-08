@@ -41,7 +41,7 @@ public class Business implements Serializable {
     @Column
     private TaxType taxType;
 
-    @Column(nullable = false)
+    @Column
     private String businessCountry;
 
     private boolean isActive = true;

@@ -8,6 +8,6 @@ import java.util.UUID;
 
 
 public interface OnboardingService {
-    UUID registerBusiness(BusinessAuthModel businessAuthModel);
+    Business registerBusiness(BusinessAuthModel businessAuthModel);
     Optional<Business> getBusinessById(Long id);
 }

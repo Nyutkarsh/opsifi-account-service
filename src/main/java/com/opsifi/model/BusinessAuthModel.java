@@ -8,14 +8,24 @@ public class BusinessAuthModel {
     private String businessAddress;
     private BusinessCategory businessType;
     private String businessSubType;
+    private String businessCountry;
 
     public BusinessAuthModel() {}
 
-    public BusinessAuthModel(String businessName, String businessAddress, BusinessCategory businessType, String businessSubType) {
+    public BusinessAuthModel(String businessName, String businessAddress, BusinessCategory businessType, String businessSubType, String businessCountry) {
         this.businessName = businessName;
         this.businessAddress = businessAddress;
         this.businessType = businessType;
         this.businessSubType = businessSubType;
+        this.businessCountry = businessCountry;
+    }
+
+    public String getBusinessCountry() {
+        return businessCountry;
+    }
+
+    public void setBusinessCountry(String businessCountry) {
+        this.businessCountry = businessCountry;
     }
 
     public String getBusinessAddress() {

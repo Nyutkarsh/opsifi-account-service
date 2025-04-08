@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "your_super_secret_key_for_jwt";
+    private static final String SECRET_KEY = "yoursupersecretkeyforjwt12345432123454321234543212345";
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());

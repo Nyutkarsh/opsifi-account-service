@@ -1,5 +1,6 @@
 package com.opsifi.controller;
 
+import com.opsifi.entities.Business;
 import com.opsifi.enums.BusinessCategory;
 import com.opsifi.enums.BusinessUsersCategory;
 import com.opsifi.model.BusinessAuthModel;
@@ -32,11 +33,11 @@ public class OnboardingController {
                 (String) requestBody.get("businessName"),
                 (String) requestBody.get("businessAddress"),
                 BusinessCategory.valueOf((String) requestBody.get("businessType")),
-                (String) requestBody.get("businessSubType")
+                (String) requestBody.get("businessSubType"),
+                (String) requestBody.get("businessCountry")
         );
 
-        UUID businessId = onboardingService.registerBusiness(businessAuthModel);
-
+        Business savedBusiness = onboardingService.registerBusiness(businessAuthModel);
 
         BusinessUsersAuthModel businessUsersAuthModel = new BusinessUsersAuthModel(
                 (String) requestBody.get("adminName"),
@@ -45,7 +46,7 @@ public class OnboardingController {
                 BusinessUsersCategory.valueOf((String) requestBody.get("userType"))
         );
 
-        String userMessage = businessUserService.registerAdminUser(businessUsersAuthModel, businessId);
+        String userMessage = businessUserService.registerAdminUser(businessUsersAuthModel, savedBusiness.getBusinessUniqueId());
 
         return ResponseEntity.ok(Map.of("business", "Business Registered Successfully", "adminUser", userMessage));
     }
