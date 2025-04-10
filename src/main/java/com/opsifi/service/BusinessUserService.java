@@ -1,9 +1,9 @@
 package com.opsifi.service;
 
-import com.opsifi.model.BusinessUsersAuthModel;
+import com.opsifi.model.OnboardingRequestModel;
 
 import java.util.UUID;
 
 public interface BusinessUserService {
-    String registerAdminUser(BusinessUsersAuthModel businessUsersAuthModel, UUID businessId);
+    String registerAdminUser(OnboardingRequestModel onboardingRequestModel, UUID businessId);
 }

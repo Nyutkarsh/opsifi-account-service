@@ -1,13 +1,12 @@
 package com.opsifi.service;
 
 import com.opsifi.entities.Business;
-import com.opsifi.model.BusinessAuthModel;
+import com.opsifi.model.OnboardingRequestModel;
 
 import java.util.Optional;
-import java.util.UUID;
 
 
 public interface OnboardingService {
-    Business registerBusiness(BusinessAuthModel businessAuthModel);
+    Business onboardBusiness(OnboardingRequestModel onboardingRequestModel);
     Optional<Business> getBusinessById(Long id);
 }

@@ -3,14 +3,15 @@ package com.opsifi.controller;
 import com.opsifi.entities.Business;
 import com.opsifi.enums.BusinessCategory;
 import com.opsifi.enums.BusinessUsersCategory;
-import com.opsifi.model.BusinessAuthModel;
-import com.opsifi.model.BusinessUsersAuthModel;
+import com.opsifi.model.OnboardingRequestModel;
+import com.opsifi.model.OnboardingResponseModel;
 import com.opsifi.service.OnboardingService;
 import com.opsifi.service.BusinessUserService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
 import java.util.Map;
 
 @RestController
@@ -26,28 +27,11 @@ public class OnboardingController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> registerBusinessWithAdmin(
-            @RequestBody Map<String, Object> requestBody) {
+    public ResponseEntity<OnboardingResponseModel> registerBusinessWithAdmin(
+            @Valid @RequestBody OnboardingRequestModel onboardingRequestModel) {
 
-        BusinessAuthModel businessAuthModel = new BusinessAuthModel(
-                (String) requestBody.get("businessName"),
-                (String) requestBody.get("businessAddress"),
-                BusinessCategory.valueOf((String) requestBody.get("businessType")),
-                (String) requestBody.get("businessSubType"),
-                (String) requestBody.get("businessCountry")
-        );
+        Business savedBusiness = onboardingService.onboardBusiness(onboardingRequestModel);
 
-        Business savedBusiness = onboardingService.registerBusiness(businessAuthModel);
-
-        BusinessUsersAuthModel businessUsersAuthModel = new BusinessUsersAuthModel(
-                (String) requestBody.get("adminName"),
-                (String) requestBody.get("adminPassword"),
-                (String) requestBody.get("adminUsername"),
-                BusinessUsersCategory.valueOf((String) requestBody.get("userType"))
-        );
-
-        String userMessage = businessUserService.registerAdminUser(businessUsersAuthModel, savedBusiness.getBusinessUniqueId());
-
-        return ResponseEntity.ok(Map.of("business", "Business Registered Successfully", "adminUser", userMessage));
+        return ResponseEntity.ok(new OnboardingResponseModel("Business Registered Successfully [Unique ID: "+savedBusiness.getBusinessUniqueId()+"], Please check your email for verification and further instructions.", "Success", HttpStatus.OK.toString()));
     }
 }
