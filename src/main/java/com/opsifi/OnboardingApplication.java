@@ -1,13 +1,13 @@
-package com.example.Onboarding;
+package com.opsifi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OnboradingApplication {
+public class OnboardingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OnboradingApplication.class, args);
+		SpringApplication.run(OnboardingApplication.class, args);
 	}
 
 }

@@ -1,12 +1,14 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
+import com.opsifi.enums.BusinessCategory;
+import com.opsifi.enums.TaxType;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Business")
+@Table(name = "business")
 public class Business implements Serializable {
 
     @Id
@@ -31,6 +33,16 @@ public class Business implements Serializable {
 
     @Column(nullable = false)
     private String businessSubType;
+
+    @Column
+    private String taxIdentificationNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private TaxType taxType;
+
+    @Column
+    private String businessCountry;
 
     private boolean isActive = true;
 

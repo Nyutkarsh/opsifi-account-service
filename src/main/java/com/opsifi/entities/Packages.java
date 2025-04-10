@@ -1,35 +1,36 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
-@Table(name = "BusinessPackages")
-public class BusinessPackages implements Serializable {
+@Table(name = "packages")
+public class Packages implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "business_id", nullable = false)
-    private Business business;
+    @Column(nullable = false)
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "package_id", nullable = false)
-    private Packages packages;
+    @Column(nullable = false, unique = true)
+    private UUID uniqueId = UUID.randomUUID();
 
-    private boolean isActive = true;
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime updatedDate = LocalDateTime.now();
 
-    public Business getBusiness() {
-        return business;
+    @Column(columnDefinition = "JSON")
+    private String config;
+
+    public String getConfig() {
+        return config;
     }
 
-    public void setBusiness(Business business) {
-        this.business = business;
+    public void setConfig(String config) {
+        this.config = config;
     }
 
     public LocalDateTime getCreatedDate() {
@@ -48,20 +49,20 @@ public class BusinessPackages implements Serializable {
         this.id = id;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public String getName() {
+        return name;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Packages getPackages() {
-        return packages;
+    public UUID getUniqueId() {
+        return uniqueId;
     }
 
-    public void setPackages(Packages packages) {
-        this.packages = packages;
+    public void setUniqueId(UUID uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     public LocalDateTime getUpdatedDate() {

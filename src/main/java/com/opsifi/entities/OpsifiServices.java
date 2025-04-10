@@ -1,4 +1,4 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "OpsifiServices")
+@Table(name = "opsifi_services")
 public class OpsifiServices implements Serializable {
 
     @Id

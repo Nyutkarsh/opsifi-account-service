@@ -1,36 +1,35 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
-@Table(name = "Packages")
-public class Packages implements Serializable {
+@Table(name = "business_packages")
+public class BusinessPackages implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "business_id", nullable = false)
+    private Business business;
 
-    @Column(nullable = false, unique = true)
-    private UUID uniqueId = UUID.randomUUID();
+    @ManyToOne
+    @JoinColumn(name = "package_id", nullable = false)
+    private Packages packages;
 
+    private boolean isActive = true;
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime updatedDate = LocalDateTime.now();
 
-    @Column(columnDefinition = "JSON")
-    private String config;
-
-    public String getConfig() {
-        return config;
+    public Business getBusiness() {
+        return business;
     }
 
-    public void setConfig(String config) {
-        this.config = config;
+    public void setBusiness(Business business) {
+        this.business = business;
     }
 
     public LocalDateTime getCreatedDate() {
@@ -49,20 +48,20 @@ public class Packages implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
-    public UUID getUniqueId() {
-        return uniqueId;
+    public Packages getPackages() {
+        return packages;
     }
 
-    public void setUniqueId(UUID uniqueId) {
-        this.uniqueId = uniqueId;
+    public void setPackages(Packages packages) {
+        this.packages = packages;
     }
 
     public LocalDateTime getUpdatedDate() {

@@ -1,11 +1,13 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
+import com.opsifi.enums.InvoiceStatus;
+import com.opsifi.enums.InvoiceSubStatus;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "BusinessInvoice")
+@Table(name = "business_invoice")
 public class BusinessInvoice implements Serializable {
 
     @Id
@@ -34,10 +36,6 @@ public class BusinessInvoice implements Serializable {
     private InvoiceSubStatus subStatus;
 
 }
-enum InvoiceStatus {
-    PAID, CANCELLED, PENDING;
-}
 
-enum InvoiceSubStatus {
-    OVERDUE, ON_TIME;
-}
+
+

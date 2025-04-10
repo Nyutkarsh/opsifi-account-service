@@ -1,12 +1,13 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
+import com.opsifi.enums.BusinessUsersCategory;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "BusinessUsers")
+@Table(name = "business_users")
 public class BusinessUsers implements Serializable {
 
     @Id
@@ -27,7 +28,8 @@ public class BusinessUsers implements Serializable {
     private Business business;
 
     @Column(nullable = false)
-    private String userType;
+    @Enumerated(EnumType.STRING)
+    private BusinessUsersCategory userType;
 
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime updatedDate = LocalDateTime.now();
@@ -88,11 +90,11 @@ public class BusinessUsers implements Serializable {
         this.userName = userName;
     }
 
-    public String getUserType() {
+    public BusinessUsersCategory getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(BusinessUsersCategory userType) {
         this.userType = userType;
     }
 }

@@ -1,13 +1,13 @@
-package com.example.Onboarding;
+package com.opsifi.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OnboradingApplicationTests {
+public class OnboardingApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

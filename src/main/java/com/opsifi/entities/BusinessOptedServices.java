@@ -1,11 +1,11 @@
-package com.example.Onboarding.model;
+package com.opsifi.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "BusinessOptedServices")
+@Table(name = "business_opted_services")
 public class BusinessOptedServices implements Serializable {
 
     @Id
