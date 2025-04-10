@@ -26,7 +26,7 @@ public class OnboardingController {
         this.businessUserService = businessUserService;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/new")
     public ResponseEntity<OnboardingResponseModel> registerBusinessWithAdmin(
             @Valid @RequestBody OnboardingRequestModel onboardingRequestModel) {
 

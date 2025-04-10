@@ -2,10 +2,16 @@ package com.opsifi.entities;
 
 import com.opsifi.enums.BusinessUsersCategory;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name = "business_users")
 public class BusinessUsers implements Serializable {
@@ -34,67 +40,7 @@ public class BusinessUsers implements Serializable {
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime updatedDate = LocalDateTime.now();
 
-    public Business getBusiness() {
-        return business;
-    }
+    @Column(nullable = false)
+    private String userEmail;
 
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public BusinessUsersCategory getUserType() {
-        return userType;
-    }
-
-    public void setUserType(BusinessUsersCategory userType) {
-        this.userType = userType;
-    }
 }

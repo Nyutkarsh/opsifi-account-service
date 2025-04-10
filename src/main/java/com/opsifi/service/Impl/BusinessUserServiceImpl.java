@@ -46,6 +46,7 @@ public class BusinessUserServiceImpl implements BusinessUserService {
         user.setUserName(onboardingRequestModel.getUsername());
         user.setPassword(passwordEncoder.encode(onboardingRequestModel.getPassword()));
         user.setUserType(onboardingRequestModel.getUserType());
+        user.setUserEmail(onboardingRequestModel.getUserEmail());
         user.setBusiness(business.get());
 
         businessUsersRepository.save(user);
